@@ -16,6 +16,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_usuario")
     @GenericGenerator(name = "secuencia_usuario", strategy = "increment")
+   
     @Column(name="idusuario")
     private long id;
 
@@ -44,6 +45,7 @@ public class Usuario {
         this.identificacion = identificacion;
     }
 
+   
     public long getId() {
         return id;
     }
@@ -52,32 +54,38 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getclave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setclave(String clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 
+    public String getIdentificacion() {
+        return identificacion;
+    }
 
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
 
-
+ 
     
 }
