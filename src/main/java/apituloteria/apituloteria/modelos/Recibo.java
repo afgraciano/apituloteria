@@ -33,12 +33,12 @@ public class Recibo {
     
     
     @Column(name="usuario_idusuario")
-    private String usuario_idusuario;
+    private long usuario_idusuario;
 
     public Recibo() {
     }
 
-    public Recibo(long id, long numeroApostado, long loteria, String hash, String usuario_idusuario) {
+    public Recibo(long id, long numeroApostado, long loteria, String hash, long usuario_idusuario) {
         this.id = id;
         this.numeroApostado = numeroApostado;
         this.loteria = loteria;
@@ -80,11 +80,11 @@ public class Recibo {
 
 
 
-    public String getusuario_idusuario() {
+    public long getusuario_idusuario() {
         return usuario_idusuario;
     }
 
-    public void setusuario_idusuario(String usuario_idusuario) {
+    public void setusuario_idusuario(long usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
     }
    
