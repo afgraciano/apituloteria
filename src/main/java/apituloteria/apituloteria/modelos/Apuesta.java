@@ -9,47 +9,52 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 
-@Table(name="apuesta")
+@Table(name = "apuesta")
 public class Apuesta {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_apuesta")
     @GenericGenerator(name = "secuencia_apuesta", strategy = "increment")
-    
-    @Column(name="idapuesta")
+    @Column(name = "idapuesta")
     private long id;
 
-    @Column(name="valorApostado")
+    @Column(name = "valorApostado")
     private long valorApostado;
 
-    @Column(name="numeroApostado")
+    @Column(name = "numeroApostado")
     private long numeroApostado;
 
-    @Column(name="modoJuego")
+    /* se hace referencia al forend key desde apuesta hacia usuario y se pone de muchos a uno serian muchas apuestas a un usuario*/
+    @ManyToOne
+    @JoinColumn(name= "usuario_idusuario", referencedColumnName ="idusuario")
+    private Usuario usuario;
+
+    @Column(name = "modoJuego")
     private long modoJuego;
 
-    @Column(name="loteria")
+    @Column(name = "loteria")
     private long loteria;
 
-    @Column(name="fechaVenta")
+    @Column(name = "fechaVenta")
     private Date fechaVenta;
-    
-    @Column(name="usuario_idusuario")
+
+    @Column(name = "usuario_idusuario")
     private long usuario_idusuario;
 
-    @Column(name="usuario_idsorteo")
+    @Column(name = "usuario_idsorteo")
     private long usuario_idsorteo;
 
     public Apuesta() {
     }
 
-    public Apuesta(long id, long valorApostado, long numeroApostado, long modoJuego, long loteria, Date fechaVenta, long usuario_idusuario, long usuario_idsorteo) {
+    public Apuesta(long id, long valorApostado, long numeroApostado, long modoJuego, long loteria, Date fechaVenta,
+            long usuario_idusuario, long usuario_idsorteo) {
         this.id = id;
         this.valorApostado = valorApostado;
         this.numeroApostado = numeroApostado;
@@ -108,8 +113,6 @@ public class Apuesta {
         this.fechaVenta = fechaVenta;
     }
 
-
-
     public long getusuario_idusuario() {
         return usuario_idusuario;
     }
@@ -117,7 +120,6 @@ public class Apuesta {
     public void setusuario_idusuario(long usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
     }
-   
 
     public long getusuario_idsorteo() {
         return usuario_idsorteo;

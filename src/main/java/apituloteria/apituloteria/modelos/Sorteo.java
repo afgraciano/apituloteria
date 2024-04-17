@@ -21,7 +21,6 @@ public class Sorteo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_sorteo")
     @GenericGenerator(name = "secuencia_sorteo", strategy = "increment")
-    
     @Column(name="idsorteo")
     private long id;
 

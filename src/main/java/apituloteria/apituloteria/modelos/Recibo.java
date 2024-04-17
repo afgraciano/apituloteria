@@ -11,28 +11,33 @@ import jakarta.persistence.Table;
 
 @Entity
 
-@Table(name="recibo")
+@Table(name = "recibo")
 public class Recibo {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_recibo")
     @GenericGenerator(name = "secuencia_recibo", strategy = "increment")
-    @Column(name="idrecibo")
+    @Column(name = "idrecibo")
     private long id;
 
-    @Column(name="numeroApostado")
+    @Column(name = "numeroApostado")
     private long numeroApostado;
 
-    @Column(name="loteria")
+    @Column(name = "loteria")
     private long loteria;
 
-    @Column(name="hash")
+    /*
+     * se hace referencia al forend key desde recibo hacia usuario y se pone de
+     * muchos a uno serian muchos recibos a un usuario
+     */
+    @ManyToOne
+    @JoinColumn(name = "usuario_idusuario", referencedColumnName = "idusuario")
+    private Usuario usuario;
+
+    @Column(name = "hash")
     private String hash;
-    
-    
-    @Column(name="usuario_idusuario")
+
+    @Column(name = "usuario_idusuario")
     private long usuario_idusuario;
 
     public Recibo() {
@@ -78,8 +83,6 @@ public class Recibo {
         this.hash = hash;
     }
 
-
-
     public long getusuario_idusuario() {
         return usuario_idusuario;
     }
@@ -87,5 +90,5 @@ public class Recibo {
     public void setusuario_idusuario(long usuario_idusuario) {
         this.usuario_idusuario = usuario_idusuario;
     }
-   
+
 }

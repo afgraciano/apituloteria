@@ -10,29 +10,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_usuario")
     @GenericGenerator(name = "secuencia_usuario", strategy = "increment")
-   
-    @Column(name="idusuario")
+    @Column(name = "idusuario")
     private long id;
 
-    @Column(name="nombre")
+    @Column(name = "nombre", length = 100, unique = true)
     private String nombre;
 
-    @Column(name="correo")
+    @Column(name = "correo")
     private String email;
 
-    @Column(name="clave")
+    @Column(name = "clave", length = 100)
     private String clave;
-    
-    
-    @Column(name="identificacion")
-    private String identificacion;
 
+    @Column(name = "identificacion")
+    private String identificacion;
 
     public Usuario() {
     }
@@ -45,7 +42,6 @@ public class Usuario {
         this.identificacion = identificacion;
     }
 
-   
     public long getId() {
         return id;
     }
@@ -86,6 +82,4 @@ public class Usuario {
         this.identificacion = identificacion;
     }
 
- 
-    
 }

@@ -17,7 +17,6 @@ public class TipoJuego {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_tipoJuego")
     @GenericGenerator(name = "secuencia_tipoJuego", strategy = "increment")
-    
     @Column(name="idTipoJuego")
     private long id;
 
