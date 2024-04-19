@@ -46,12 +46,7 @@ public class Apuesta {
     @JoinColumn(name = "sorteo_idsorteo", referencedColumnName = "idsorteo")
     private Sorteo sorteo;
     
-    /*
-     * @ManyToOne
-     * 
-     * @JoinColumn(name = "loteria", referencedColumnName = "idloteria")
-     * private Loteria idLoteria;
-     */
+   
 
     @ManyToOne
     @JoinColumn(name = "tipoJuego_idTipoJuego", referencedColumnName = "idTipoJuego")
