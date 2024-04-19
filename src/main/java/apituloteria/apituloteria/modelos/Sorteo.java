@@ -3,14 +3,15 @@ package apituloteria.apituloteria.modelos;
 import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
-
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,9 +28,13 @@ public class Sorteo {
     /*
      * se hace referencia al forend key desde sorteo hacia loteria y se pone de
      * muchos a uno
-     */
-    @ManyToOne
-    @JoinColumn(name = "loteria_idloteria", referencedColumnName = "idloteria")
+     
+    @OneToOne
+    @JoinColumn(name = "loteria_idloteria") // , referencedColumnName = "idloteria")
+    private Loteria loteria;*/
+
+    @OneToOne
+    @JoinColumn(name = "loteria_idloteria", foreignKey = @ForeignKey(name = "FK_sorteo_loteria"))
     private Loteria loteria;
 
     @Column(name = "fechaSorteo")
@@ -41,19 +46,15 @@ public class Sorteo {
     @Column(name = "numSorteo")
     private long numSorteo;
 
-    @Column(name = "loteria_idloteria")
-    private long loteria_idloteria;
-
     public Sorteo() {
     }
 
-    public Sorteo(long id, Date fechaSorteo, long numGanador, long numSorteo, long loteria_idloteria) {
+    public Sorteo(long id, Loteria loteria, Date fechaSorteo, long numGanador, long numSorteo) {
         this.id = id;
+        this.loteria = loteria;
         this.fechaSorteo = fechaSorteo;
         this.numGanador = numGanador;
         this.numSorteo = numSorteo;
-        this.loteria_idloteria = loteria_idloteria;
-
     }
 
     public long getId() {
@@ -62,6 +63,14 @@ public class Sorteo {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Loteria getLoteria() {
+        return loteria;
+    }
+
+    public void setLoteria(Loteria loteria) {
+        this.loteria = loteria;
     }
 
     public Date getFechaSorteo() {
@@ -86,14 +95,6 @@ public class Sorteo {
 
     public void setNumSorteo(long numSorteo) {
         this.numSorteo = numSorteo;
-    }
-
-    public long getLoteria_idloteria() {
-        return loteria_idloteria;
-    }
-
-    public void setLoteria_idloteria(long loteria_idloteria) {
-        this.loteria_idloteria = loteria_idloteria;
     }
 
 }

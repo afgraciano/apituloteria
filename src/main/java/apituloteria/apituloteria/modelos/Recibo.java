@@ -39,18 +39,15 @@ public class Recibo {
     @Column(name = "hash")
     private String hash;
 
-    @Column(name = "usuario_idusuario")
-    private long usuario_idusuario;
-
     public Recibo() {
     }
 
-    public Recibo(long id, long numeroApostado, long loteria, String hash, long usuario_idusuario) {
+    public Recibo(long id, long numeroApostado, long loteria, Usuario usuario, String hash) {
         this.id = id;
         this.numeroApostado = numeroApostado;
         this.loteria = loteria;
+        this.usuario = usuario;
         this.hash = hash;
-        this.usuario_idusuario = usuario_idusuario;
     }
 
     public long getId() {
@@ -61,36 +58,36 @@ public class Recibo {
         this.id = id;
     }
 
-    public long getnumeroApostado() {
+    public long getNumeroApostado() {
         return numeroApostado;
     }
 
-    public void setnumeroApostado(long numeroApostado) {
+    public void setNumeroApostado(long numeroApostado) {
         this.numeroApostado = numeroApostado;
     }
 
-    public long getloteria() {
+    public long getLoteria() {
         return loteria;
     }
 
-    public void setloteria(long loteria) {
+    public void setLoteria(long loteria) {
         this.loteria = loteria;
     }
 
-    public String gethash() {
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getHash() {
         return hash;
     }
 
-    public void sethash(String hash) {
+    public void setHash(String hash) {
         this.hash = hash;
-    }
-
-    public long getusuario_idusuario() {
-        return usuario_idusuario;
-    }
-
-    public void setusuario_idusuario(long usuario_idusuario) {
-        this.usuario_idusuario = usuario_idusuario;
     }
 
 }

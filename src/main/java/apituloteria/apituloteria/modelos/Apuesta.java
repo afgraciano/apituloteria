@@ -22,7 +22,7 @@ public class Apuesta {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_apuesta")
     @GenericGenerator(name = "secuencia_apuesta", strategy = "increment")
     @Column(name = "idapuesta")
-    private long id;
+    private Long id;
 
     @Column(name = "valorApostado")
     private long valorApostado;
@@ -61,89 +61,102 @@ public class Apuesta {
     @Column(name = "fechaVenta")
     private Date fechaVenta;
 
-    @Column(name = "usuario_idusuario")
+   /*@Column(name = "usuario_idusuario")
     private long usuario_idusuario;
 
     @Column(name = "usuario_idsorteo")
-    private long usuario_idsorteo;
+    private long usuario_idsorteo;*/
 
     public Apuesta() {
     }
 
-    public Apuesta(long id, long valorApostado, long numeroApostado, long modoJuego, long loteria, Date fechaVenta,
-            long usuario_idusuario, long usuario_idsorteo) {
+    public Apuesta(Long id, long valorApostado, long numeroApostado, Usuario usuario, Sorteo sorteo,
+            TipoJuego tipoJuego, long modoJuego, long loteria, Date fechaVenta) {
         this.id = id;
         this.valorApostado = valorApostado;
         this.numeroApostado = numeroApostado;
+        this.usuario = usuario;
+        this.sorteo = sorteo;
+        this.tipoJuego = tipoJuego;
         this.modoJuego = modoJuego;
         this.loteria = loteria;
         this.fechaVenta = fechaVenta;
-        this.usuario_idusuario = usuario_idusuario;
-        this.usuario_idsorteo = usuario_idsorteo;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getvalorApostado() {
+    public long getValorApostado() {
         return valorApostado;
     }
 
-    public void setvalorApostado(long valorApostado) {
+    public void setValorApostado(long valorApostado) {
         this.valorApostado = valorApostado;
     }
 
-    public long getnumeroApostado() {
+    public long getNumeroApostado() {
         return numeroApostado;
     }
 
-    public void setnumeroApostado(long numeroApostado) {
+    public void setNumeroApostado(long numeroApostado) {
         this.numeroApostado = numeroApostado;
     }
 
-    public long getmodoJuego() {
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Sorteo getSorteo() {
+        return sorteo;
+    }
+
+    public void setSorteo(Sorteo sorteo) {
+        this.sorteo = sorteo;
+    }
+
+    public TipoJuego getTipoJuego() {
+        return tipoJuego;
+    }
+
+    public void setTipoJuego(TipoJuego tipoJuego) {
+        this.tipoJuego = tipoJuego;
+    }
+
+    public long getModoJuego() {
         return modoJuego;
     }
 
-    public void setmodoJuego(long modoJuego) {
+    public void setModoJuego(long modoJuego) {
         this.modoJuego = modoJuego;
     }
 
-    public long getloteria() {
+    public long getLoteria() {
         return loteria;
     }
 
-    public void setloteria(long loteria) {
+    public void setLoteria(long loteria) {
         this.loteria = loteria;
     }
 
-    public Date getfechaVenta() {
+    public Date getFechaVenta() {
         return fechaVenta;
     }
 
-    public void setfechaVenta(Date fechaVenta) {
+    public void setFechaVenta(Date fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
 
-    public long getusuario_idusuario() {
-        return usuario_idusuario;
-    }
+   
 
-    public void setusuario_idusuario(long usuario_idusuario) {
-        this.usuario_idusuario = usuario_idusuario;
-    }
-
-    public long getusuario_idsorteo() {
-        return usuario_idsorteo;
-    }
-
-    public void setusuario_idsorteo(long usuario_idsorteo) {
-        this.usuario_idsorteo = usuario_idsorteo;
-    }
+   
 
 }

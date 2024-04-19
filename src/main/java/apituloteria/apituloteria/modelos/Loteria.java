@@ -10,34 +10,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="loteria")
+@Table(name = "loteria")
 public class Loteria {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_loteria")
-    @GenericGenerator(name = "secuencia_loteria", strategy = "increment")
-    @Column(name="idloteria")
-    private long id;
+    @Column(name = "idloteria")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name="nombreLoteria")
+    @Column(name = "nombreLoteria")
     private String nombreLoteria;
-
-
 
     public Loteria() {
     }
 
-    public Loteria(long id, String nombreLoteria) {
+    public Loteria(Long id, String nombreLoteria) {
         this.id = id;
         this.nombreLoteria = nombreLoteria;
-        
+
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,6 +45,4 @@ public class Loteria {
         this.nombreLoteria = nombreLoteria;
     }
 
-   
-    
 }
