@@ -9,35 +9,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 
-@Table(name="sorteo")
+@Table(name = "sorteo")
 public class Sorteo {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_sorteo")
     @GenericGenerator(name = "secuencia_sorteo", strategy = "increment")
-    @Column(name="idsorteo")
+    @Column(name = "idsorteo")
     private long id;
 
-    @Column(name="fechaSorteo")
+    /*
+     * se hace referencia al forend key desde sorteo hacia loteria y se pone de
+     * muchos a uno
+     */
+    @ManyToOne
+    @JoinColumn(name = "loteria_idloteria", referencedColumnName = "idloteria")
+    private Loteria loteria;
+
+    @Column(name = "fechaSorteo")
     private Date fechaSorteo;
 
-    @Column(name="numGanador")
+    @Column(name = "numGanador")
     private long numGanador;
 
-    @Column(name="numSorteo")
+    @Column(name = "numSorteo")
     private long numSorteo;
 
-    @Column(name="loteria_idloteria")
+    @Column(name = "loteria_idloteria")
     private long loteria_idloteria;
 
-    
-    
     public Sorteo() {
     }
 
@@ -47,8 +53,7 @@ public class Sorteo {
         this.numGanador = numGanador;
         this.numSorteo = numSorteo;
         this.loteria_idloteria = loteria_idloteria;
-        
-       
+
     }
 
     public long getId() {
@@ -90,6 +95,5 @@ public class Sorteo {
     public void setLoteria_idloteria(long loteria_idloteria) {
         this.loteria_idloteria = loteria_idloteria;
     }
-
 
 }

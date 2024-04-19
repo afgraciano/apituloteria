@@ -30,10 +30,32 @@ public class Apuesta {
     @Column(name = "numeroApostado")
     private long numeroApostado;
 
-    /* se hace referencia al forend key desde apuesta hacia usuario y se pone de muchos a uno serian muchas apuestas a un usuario*/
+    /*
+     * se hace referencia al forend key desde apuesta hacia usuario y se pone de
+     * muchos a uno serian muchas apuestas a un usuario
+     */
     @ManyToOne
-    @JoinColumn(name= "usuario_idusuario", referencedColumnName ="idusuario")
+    @JoinColumn(name = "usuario_idusuario", referencedColumnName = "idusuario")
     private Usuario usuario;
+
+    /*
+     * se hace referencia al forend key desde apuestas hacia sorteo y se pone de
+     * muchos a uno
+     */
+    @ManyToOne
+    @JoinColumn(name = "sorteo_idsorteo", referencedColumnName = "idsorteo")
+    private Sorteo sorteo;
+    
+    /*
+     * @ManyToOne
+     * 
+     * @JoinColumn(name = "loteria", referencedColumnName = "idloteria")
+     * private Loteria idLoteria;
+     */
+
+    @ManyToOne
+    @JoinColumn(name = "tipoJuego_idTipoJuego", referencedColumnName = "idTipoJuego")
+    private TipoJuego tipoJuego;
 
     @Column(name = "modoJuego")
     private long modoJuego;
