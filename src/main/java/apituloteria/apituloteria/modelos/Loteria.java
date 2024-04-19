@@ -12,10 +12,17 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "loteria")
 public class Loteria {
-    @Id
+   /*  @Id
     @Column(name = "idloteria")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;*/
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_loteria")
+    @GenericGenerator(name = "secuencia_loteria", strategy = "increment")
+    @Column(name = "idloteria")
     private Long id;
+
 
     @Column(name = "nombreLoteria")
     private String nombreLoteria;

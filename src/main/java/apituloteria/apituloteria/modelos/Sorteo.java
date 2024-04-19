@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-//import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -27,15 +26,12 @@ public class Sorteo {
 
     /*
      * se hace referencia al forend key desde sorteo hacia loteria y se pone de
-     * muchos a uno
+     * muchos a uno*/
      
     @OneToOne
-    @JoinColumn(name = "loteria_idloteria") // , referencedColumnName = "idloteria")
-    private Loteria loteria;*/
-
-    @OneToOne
-    @JoinColumn(name = "loteria_idloteria", foreignKey = @ForeignKey(name = "FK_sorteo_loteria"))
+    @JoinColumn(name = "loteria_idloteria", referencedColumnName = "idloteria")
     private Loteria loteria;
+
 
     @Column(name = "fechaSorteo")
     private Date fechaSorteo;
