@@ -1,7 +1,6 @@
 
 package apituloteria.apituloteria.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import apituloteria.apituloteria.modelos.Apuesta;
@@ -10,8 +9,11 @@ import apituloteria.apituloteria.servicios.ApuestaService;
 @RestController
 @RequestMapping("/apuestas")
 public class ApuestaController {
-    @Autowired
-    private ApuestaService apuestaService;
+    private final ApuestaService apuestaService;
+
+    public ApuestaController(ApuestaService apuestaService) {
+        this.apuestaService = apuestaService;
+    }
 
     @GetMapping("/")
     public List<Apuesta> getAllApuestas() {
